@@ -1,0 +1,107 @@
+<!-- VitaEdge - 首页（实时监测） -->
+
+<view class="container">
+  <!-- 顶部状态栏 -->
+  <view class="status-bar">
+    <view class="status-left">
+      <view class="device-name">{{deviceName}}</view>
+      <view class="connection-status {{connected ? 'online' : 'offline'}}">
+        {{connected ? '已连接' : '未连接'}}
+      </view>
+    </view>
+    <view class="status-right">
+      <view class="battery">
+        <text>🔋</text> {{battery}}%
+      </view>
+    </view>
+  </view>
+
+  <!-- 主健康卡片 -->
+  <view class="main-card" style="border-color: {{statusColor}}">
+    <view class="card-header">
+      <text class="card-title">实时监测</text>
+      <text class="update-time">{{lastUpdate}}</text>
+    </view>
+    
+    <!-- 心率 -->
+    <view class="metric-row">
+      <view class="metric-item main-metric">
+        <view class="metric-value" style="color: {{statusColor}}">
+          {{heartRate}}
+        </view>
+        <view class="metric-label">心率 (bpm)</view>
+      </view>
+    </view>
+    
+    <!-- 血压 -->
+    <view class="metric-row">
+      <view class="metric-item">
+        <view class="metric-value">{{bpSystolic}}</view>
+        <view class="metric-label">收缩压</view>
+      </view>
+      <view class="metric-divider">/</view>
+      <view class="metric-item">
+        <view class="metric-value">{{bpDiastolic}}</view>
+        <view class="metric-label">舒张压</view>
+      </view>
+      <view class="metric-unit">mmHg</view>
+    </view>
+    
+    <!-- 血糖 -->
+    <view class="metric-row">
+      <view class="metric-item">
+        <view class="metric-value">{{glucose}}</view>
+        <view class="metric-label">血糖估算</view>
+      </view>
+      <view class="metric-unit">mmol/L</view>
+    </view>
+    
+    <!-- 血氧 & HRV -->
+    <view class="metric-row secondary">
+      <view class="metric-item">
+        <view class="metric-value">🫁 {{spO2}}</view>
+        <view class="metric-label">血氧</view>
+      </view>
+      <view class="metric-item">
+        <view class="metric-value">💓 {{hrv}}</view>
+        <view class="metric-label">HRV (ms)</view>
+      </view>
+    </view>
+    
+    <!-- 压力指数 -->
+    <view class="stress-card">
+      <view class="stress-label">压力指数</view>
+      <view class="stress-bar">
+        <view class="stress-fill" style="width: {{stressIndex}}%; background: {{statusColor}}"></view>
+      </view>
+      <view class="stress-text">{{stressText}}</view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn-primary" bindtap="refresh" disabled="{{connected}}">
+      {{connected ? '已连接设备' : '连接设备'}}
+    </button>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="tab-bar">
+    <view class="tab-item active">
+      <text class="tab-icon">📊</text>
+      <text class="tab-text">监测</text>
+    </view>
+    <view class="tab-item" bindtap="goToHistory">
+      <text class="tab-icon">📈</text>
+      <text class="tab-text">趋势</text>
+    </view>
+    <view class="tab-item" bindtap="goToAgent">
+      <text class="tab-icon">🤖</text>
+      <text class="tab-text">健康助手</text>
+    </view>
+    <view class="tab-item" bindtap="goToFamily">
+      <text class="tab-icon">👨‍👩‍👧</text>
+      <text class="tab-text">家人</text>
+    </view>
+  </view>
+</view>
