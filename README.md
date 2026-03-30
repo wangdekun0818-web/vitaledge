@@ -7,6 +7,21 @@
   <img src="https://img.shields.io/badge/Cost-¥167-red" />
 </p>
 
+一个面向家庭场景的低成本 AI 健康守护项目：通过 ESP32 + PPG/ECG 持续采集体征，结合 TinyML 本地推理与 OpenClaw Agent，实现全天候监测、主动关怀与分级预警。
+
+## 快速开始
+
+```bash
+# 1) 克隆仓库
+git clone git@github.com:wangdekun0818-web/vitaledge.git
+cd vitaledge
+
+# 2) 查看主要模块
+ls firmware miniapp agent models docs
+```
+
+> 说明：`firmware` 为设备侧，`miniapp` 为微信小程序，`agent` 为健康智能体逻辑。
+
 ## 核心创新
 
 **不是健康监测设备，是一个会进化的"数字健康分身"**
