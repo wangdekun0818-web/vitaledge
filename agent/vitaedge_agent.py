@@ -233,9 +233,9 @@ class VitaEdgeAgent:
             result["alerts"].append(self.generate_alert(anomaly_level))
         
         # 检查是否需要主动关怀
-       关怀 = self.check_proactive_care()
-        if 关怀:
-            result["actions"].append(关怀)
+        care = self.check_proactive_care()
+        if care:
+            result["actions"].append(care)
         
         # 定期生成报告
         if self.should_generate_report():
